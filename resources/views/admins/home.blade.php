@@ -26,19 +26,18 @@
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                <img class="profile-user-img img-fluid img-circle" src="{{asset('lte/dist/img/avatar5.png')}}" alt="User profile picture">
-              </div>
+                <img src="{{ "http://127.0.0.1:8000" . Auth::user()->gambar}}" class="profile-user-img img-fluid img-box" alt="{{ (Auth::user()->nama_admin) }}">
+              </div><br><br>
 
-              <h3 class="profile-username text-center mb-2">Slamet Mochamad Yakub</h3>
 
               {{-- <p class="text-muted text-center">Software Engineer</p> --}}
 
               <ul class="list-group list-group-unbordered mb-4">
                 <li class="list-group-item mb-2">
-                  <b>Email</b> <a class="float-right">mochyakub@gmail.com</a>
-                </li>
+                    <b>Nama</b> <div class="float-right"><b>{{Auth::user()->nama_admin}}</b></div>
+                  </li>
                 <li class="list-group-item mb-2">
-                  <b>Nomor Telepon</b> <a class="float-right">085733296518</a>
+                  <b>Email</b> <div class="float-right"><b>{{Auth::user()->email}}</b></div>
                 </li>
                 {{-- <li class="list-group-item">
                   <b>Friends</b> <a class="float-right">13,287</a>

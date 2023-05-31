@@ -54,7 +54,7 @@
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>Foto Profil</th>
+                            <th>Foto Admin</th>
                             <th>Nama </th>
                             <th>Email </th>
                             <th>Action </th>

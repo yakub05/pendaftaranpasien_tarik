@@ -35,7 +35,7 @@
     <div class="container">
         <div class="card mt-4">
             <div class="card-header ">
-                <h3><strong>Formulir Pendaftaran Pasien Baru Puskesmas Tarik</strong></h3>
+                <h3><strong>Formulir Pendaftaran Pasien Ke Poli di Puskesmas Tarik</strong></h3>
             </div>
             <div class="card-body ">
                 <form action="formdaftarpasien" method="post" enctype="multipart/form-data">

@@ -39,7 +39,7 @@ class PasienController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'nik'=>'required|unique:pasiens,nik',
+            'nik'=>'required|unique:pasiens|Max:16|Min:16',
             'nama'=>'required',
             'tempatlahir'    =>'required',
             'tgl_lahir' =>' required',
@@ -53,6 +53,8 @@ class PasienController extends Controller
         Validator::make($request->all(), $rules, $messages =
         [
             'nik.required' => "NIK harus diisi!",
+            'nik.Max' => "Nik Maksimal 16",
+            'nik.Max' => "Nik Minimal 16",
             'nik.unique'    => 'NIK sudah pernah digunakan',
             'nama.required' =>'Nama harus diisi!',
             'tempatlahir.required'=>'Tempat Lahir harus diisi!',

@@ -192,5 +192,9 @@ Route::middleware(['LoginMiddleware'])->group(function () {
     Route::get('syarat/syaratketentuan', function () {
         return view('syarat.syaratketentuan');
     })->name('syaratketentuan');
+//edit syarat dan katentuan
+Route::get('syarat/editsyaratketentuan', function () {
+    return view('syarat.editsyaratketentuan');
+})->name('editsyaratketentuan');
 
 });

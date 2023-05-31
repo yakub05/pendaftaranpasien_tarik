@@ -43,26 +43,21 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <strong><i class="fa fa-user mr-1"></i> Nama</strong>
+              <strong><i class="fa fa-user mr-1" style="padding-left:20px;"></i> Nama</strong>
 
-              <p class="text-muted">
+              <p class="text-muted" style="padding-left:20px;">
                 {{$admin->nama_admin}}
               </p>
 
               <hr>
 
-              <strong><i class="fa fa-envelope mr-1"></i> Email</strong>
+              <strong><i class="fa fa-envelope mr-1" style="padding-left:20px;"></i> Email</strong>
 
-              <p class="text-muted">
+              <p class="text-muted" style="padding-left:20px;">
                 {{$admin->email}}
               </p>
 
               <hr>
-
-              <strong><i class="fa fa-phone mr-1"></i> Nomor Telepon</strong>
-
-              <p class="text-muted">
-              </p>
 
               <div class="col card-header text-right">
                 <a class="btn btn-secondary" href="/admins/dataadmin">Kembali</a>
