@@ -65,6 +65,8 @@
                             <th>Alamat</th>
                             <th>Jenis Layanan Kesehatan</th>
                             <th>Action </th>
+                            {{-- <th>Konfirmasi</th>
+                            <th>Status</th> --}}
                         </tr>
                         </thead>
                         @foreach ($pasienlist as $item )
@@ -87,6 +89,19 @@
                                     Delete
                                 </a>
                             </td>
+                            {{-- <td class="project-actions">
+                                <a class="btn btn-success btn-sm" href="konfirmasi/{{$item->id}}">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    Diterima
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="konfirmasiditolak/{{$item->id}}">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Ditolak
+                                </a>
+                            </td>
+                            <td>{{$item->status}}</td> --}}
                         </tr>
                         @endforeach
                         </tbody>

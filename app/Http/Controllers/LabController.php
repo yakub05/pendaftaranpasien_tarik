@@ -11,12 +11,12 @@ use Illuminate\Routing\Controller;
 class LabController extends Controller
 {
     public function index(){
-        $data = Antrian::with('pasien')->where('polis', 7)->paginate(5);
+        $data = Antrian::with('pasien')->where('polis', 7)->where('delete', null)->paginate(5);
         return view('pasien.laborat', compact('data'));
     }
 
     public function destroy(){
-        $data = Antrian::with('pasien')->where('polis', 7)->delete();
+        $data = Antrian::with('pasien')->where('polis', 7)->update(['delete'=>'hapus']);
         toast('Data Laboratorium Kesehatan Berhasil Di Reset','success');
         return redirect()->route('laboratindex');
     }

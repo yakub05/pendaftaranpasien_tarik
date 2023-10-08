@@ -11,12 +11,12 @@ use Illuminate\Routing\Controller;
 class PolikbController extends Controller
 {
     public function index(){
-        $data = Antrian::with('pasien')->where('polis', 6)->paginate(5);
+        $data = Antrian::with('pasien')->where('polis', 6)->where('delete', null)->paginate(5);
         return view('pasien.polikb', compact('data'));
     }
 
     public function destroy(){
-        $data = Antrian::with('pasien')->where('polis', 6)->delete();
+        $data = Antrian::with('pasien')->where('polis', 6)->update(['delete'=>'hapus']);
         toast('Data Poli KB Berhasil Di Reset','success');
         return redirect()->route('polikbindex');
     }

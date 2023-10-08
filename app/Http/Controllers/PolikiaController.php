@@ -11,12 +11,12 @@ use Illuminate\Routing\Controller;
 class PolikiaController extends Controller
 {
     public function index(){
-        $data = Antrian::with('pasien')->where('polis', 4)->paginate(5);
+        $data = Antrian::with('pasien')->where('polis', 4)->where('delete', null)->paginate(5);
         return view('pasien.polikia', compact('data'));
     }
 
     public function destroy(){
-        $data = Antrian::with('pasien')->where('polis', 4)->delete();
+        $data = Antrian::with('pasien')->where('polis', 4)->update(['delete'=>'hapus']);
         toast('Data Poli KIA Berhasil Di Reset','success');
         return redirect()->route('polikiaindex');
     }

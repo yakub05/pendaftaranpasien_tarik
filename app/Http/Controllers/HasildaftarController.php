@@ -19,7 +19,7 @@ class HasildaftarController extends Controller
         $nik = $request->nik;
         $pasien1 = DB::table('pasiens')->where('nik', '=', $nik)->first('id');
         if ($pasien1 == null){
-            return back()->with('warning','NIK tidak ditemukan');
+            return redirect('/show-hasildaftar')->with('warning','NIK tidak ditemukan');
         }
         $pasien = $pasien1->id;
         // dd($pasien);

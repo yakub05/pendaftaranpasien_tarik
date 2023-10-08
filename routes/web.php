@@ -1,21 +1,23 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AntrianController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\HasildaftarController;
-use App\Http\Controllers\KuotaadminController;
-use App\Http\Controllers\KuotaController;
-use App\Http\Controllers\LabController;
-use App\Http\Controllers\PasienController;
-use App\Http\Controllers\PoligigiController;
-use App\Http\Controllers\PoligiziController;
-use App\Http\Controllers\PolikbController;
-use App\Http\Controllers\PolikiaController;
-use App\Http\Controllers\PolilansiaController;
-use App\Http\Controllers\PoliumumController;
 use App\Models\Antrian;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LabController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KuotaController;
+use App\Http\Controllers\PasienController;
+use App\Http\Controllers\PolikbController;
+use App\Http\Controllers\SyaratController;
+use App\Http\Controllers\AntrianController;
+use App\Http\Controllers\PolikiaController;
+use App\Http\Controllers\PoligigiController;
+use App\Http\Controllers\PoligiziController;
+use App\Http\Controllers\PoliumumController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\KuotaadminController;
+use App\Http\Controllers\PolilansiaController;
+use App\Http\Controllers\ShowsyaratController;
+use App\Http\Controllers\HasildaftarController;
 
 //halaman user
 Route::get('/', function () {
@@ -42,10 +44,11 @@ Route::get('/formdaftarpasien', [AntrianController::class, 'index']);
 // })->name('kuotapasien1');
 Route::get('/kuotapasien', [KuotaController::class, 'index'])->name('kuotapasien1');
 
-Route::get('syaratketentuan', function () {
-    return view('layouts/syaratketentuan');
-})->name('syaratketentuan1');
-
+// Route::get('syaratketentuan', function () {
+//     return view('layouts/syaratketentuan');
+// })->name('syaratketentuan1');
+Route::get('/syaratketentuan', [ShowsyaratController::class, 'index'])->name('syaratketentuan1');
+Route::get('/show-hasildaftar', [HasildaftarController::class, 'index']);
 Route::get('hasildaftar', [HasildaftarController::class, 'exportPDF'], function () {
     return view('layouts/hasildaftar');
 })->name('hasildaftar');
@@ -119,7 +122,7 @@ Route::middleware(['LoginMiddleware'])->group(function () {
     Route::get('pdf/export-excel', [PasienController::class, 'ExportExcel'], function () {
         return view('pdf.export-excel');
     })->name('export-excel');
-
+//index kuota pasien
     Route::get('pasien/kuotapasien', [KuotaadminController::class, 'index']);
 
 //edit kuota poli
@@ -128,13 +131,13 @@ Route::middleware(['LoginMiddleware'])->group(function () {
 
 //halaman data poli
     Route::get('pasien/datapoli', function () {
-        $datapoli1 = Antrian::with('pasien')->where('polis', 1)->count();
-        $datapoli2 = Antrian::with('pasien')->where('polis', 2)->count();
-        $datapoli3 = Antrian::with('pasien')->where('polis', 3)->count();
-        $datapoli4 = Antrian::with('pasien')->where('polis', 4)->count();
-        $datapoli5 = Antrian::with('pasien')->where('polis', 5)->count();
-        $datapoli6 = Antrian::with('pasien')->where('polis', 6)->count();
-        $datapoli7 = Antrian::with('pasien')->where('polis', 7)->count();
+        $datapoli1 = Antrian::with('pasien')->where('polis', 1)->where('delete', null)->count();
+        $datapoli2 = Antrian::with('pasien')->where('polis', 2)->where('delete', null)->count();
+        $datapoli3 = Antrian::with('pasien')->where('polis', 3)->where('delete', null)->count();
+        $datapoli4 = Antrian::with('pasien')->where('polis', 4)->where('delete', null)->count();
+        $datapoli5 = Antrian::with('pasien')->where('polis', 5)->where('delete', null)->count();
+        $datapoli6 = Antrian::with('pasien')->where('polis', 6)->where('delete', null)->count();
+        $datapoli7 = Antrian::with('pasien')->where('polis', 7)->where('delete', null)->count();
         return view('pasien.datapoli', compact('datapoli1', 'datapoli2', 'datapoli3', 'datapoli4', 'datapoli5', 'datapoli6', 'datapoli7'));
     })->name('datapoli');
 
@@ -189,12 +192,16 @@ Route::middleware(['LoginMiddleware'])->group(function () {
         return view('exportpoli.lab');
     })->name('lab');
 //Syarat dan Ketentuan
-    Route::get('syarat/syaratketentuan', function () {
-        return view('syarat.syaratketentuan');
-    })->name('syaratketentuan');
+Route::get('syarat/syaratketentuan', [SyaratController::class, 'index']);
 //edit syarat dan katentuan
-Route::get('syarat/editsyaratketentuan', function () {
-    return view('syarat.editsyaratketentuan');
-})->name('editsyaratketentuan');
+Route::get('syarat/editsyaratketentuan/{id}', [SyaratController::class, 'edit'])->name('editsyaratketentuan');
+Route::put('syarat/editsyaratketentuan/{id}', [SyaratController::class, 'update'])->name('update');
+
+//konfirmasi diterima
+Route::get('pasien/konfirmasi/{id}', [PasienController::class, 'KonfirmasiDiterima']);
+
+//konfirmasi diterima
+Route::get('pasien/konfirmasiditolak/{id}', [PasienController::class, 'KonfirmasiDitolak']);
+
 
 });

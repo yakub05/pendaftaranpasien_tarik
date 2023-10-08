@@ -26,15 +26,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                        <h3 class="card-title"><strong>Daftar Admin Puskesmas Tarik</strong></h3>
+                        <h3 class="card-title"><strong>Tabel Data</strong></h3>
 
                         <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                            <a href=""><button type="button" class="btn btn-primary">
-                                <i class="fas fa-solid fa-plus"></i>
-                                Tambah data
-                            </button></a>
-                        </div>
+
                     </div>
                 </div>
                     <!-- /.card-header -->
@@ -45,27 +40,25 @@
             <tr>
                 <th>No</th>
                 <th>Nama </th>
-                <th>Email </th>
+                <th>Isi </th>
                 <th>Action </th>
             </tr>
             </thead>
+
+            @foreach ($syarat as $ketentuan)
             <tr>
-                <td>1</td>
-                <td>Syarat dan Ketentuan</td>
-                <td>blablab</td>
+                <td>{{$loop->iteration}}</td>
+                <td>{{$ketentuan->nama_layanan}}</td>
+                <td>{!!Str::limit($ketentuan->isi,200)!!}</td>
                 <td class="project-actions">
-                    <a class="btn btn-primary btn-sm" href="">
-                        <i class="fas fa-folder">
-                        </i>
-                        View
-                    </a>
-                    <a class="btn btn-info btn-sm" href="/syarat/editsyaratketentuan">
+                    <a class="btn btn-info btn-sm" href="/syarat/editsyaratketentuan/{{$ketentuan->id}}">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Edit
                     </a>
                 </td>
             </tr>
+            @endforeach
             </tbody>
         </table>
         <!-- pagination -->

@@ -10,11 +10,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Syarat Dan Ketentuan</h1>
+            <h1>Edit Syarat Dan Ketentuan</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/admins/home">Home</a></li>
               <li class="breadcrumb-item"><a href="/syarat/syaratketentuan">Syarat dan Ketentuan</a></li>
               <li class="breadcrumb-item active">edit syarat dan ketentuan</li>
             </ol>
@@ -33,17 +32,18 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form action ="" method="" enctype="multipart/form-data" id="quickForm">
-
+                  <form action ="/syarat/editsyaratketentuan/{{$syarat->id}}" method="POST" enctype="multipart/form-data" id="quickForm">
+                    @csrf
+                    @method('PUT')
                         <div  class="card-body">
                             <div class="form-group">
-                            <label for="namaadmin">Judul</label>
-                            <input type="text" name="namaadmin" class="form-control" id="namaadmin" value="" required>
+                            <label for="judul">Judul</label>
+                            <input type="text" name="judul" class="form-control" id="namaadmin" value="{{$syarat->nama_layanan,old('nama_layanan')}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="emailadmin">Isi syarat Ketentuan</label>
-                                <textarea name="" id="isisyaratketentuan" class="form-control" cols="30" rows="10"></textarea>
+                                <label for="isi">Isi syarat Ketentuan</label>
+                                <textarea name="isi" id="isisyaratketentuan" value=""class="form-control" cols="30" rows="10">{{$syarat->isi,old('isi')}}</textarea>
                             </div>
 
                         </div>

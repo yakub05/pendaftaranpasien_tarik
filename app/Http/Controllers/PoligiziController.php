@@ -11,12 +11,12 @@ use Illuminate\Routing\Controller;
 class PoligiziController extends Controller
 {
     public function index(){
-        $data = Antrian::with('pasien')->where('polis', 5)->paginate(5);
+        $data = Antrian::with('pasien')->where('polis', 5)->where('delete', NULL)->paginate(5);
         return view('pasien.poligizi', compact('data'));
     }
 
     public function destroy(){
-        $data = Antrian::with('pasien')->where('polis', 5)->delete();
+        $data = Antrian::with('pasien')->where('polis', 5)->update(['delete'=>"hapus"]);;
         toast('Data Poli Gizi Berhasil Di Reset','success');
         return redirect()->route('poligiziindex');
     }

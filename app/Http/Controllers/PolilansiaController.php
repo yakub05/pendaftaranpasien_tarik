@@ -12,12 +12,12 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class PolilansiaController extends Controller
 {
     public function index(){
-        $data = Antrian::with('pasien')->where('polis', 3)->paginate(5);
+        $data = Antrian::with('pasien')->where('polis', 3)->where('delete', null)->paginate(5);
         return view('pasien.polilansia', compact('data'));
     }
 
     public function destroy(){
-        $data = Antrian::with('pasien')->where('polis', 3)->delete();
+        $data = Antrian::with('pasien')->where('polis', 3)->update(['delete'=>'hapus']);
         toast('Data Poli Lansia Berhasil Di Reset','success');
         return redirect()->route('polilansiaindex');
     }

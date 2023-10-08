@@ -69,7 +69,7 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto" href="{{URL::route('regispasien')}}">Registrasi Pasien Baru</a></li>
-          <li><a class="nav-link scrollto" href="{{URL::route('daftarpasien')}}">Pendaftaran Pasien</a></li>
+          <li><a class="nav-link scrollto" href="{{URL::route('daftarpasien')}}">Pendaftaran Pasien ke Poli</a></li>
           <li><a class="nav-link scrollto" href="{{URL::route('kuotapasien1')}}">Kuota Pasien</a></li>
           <li><a class="nav-link scrollto" href="{{URL::route('syaratketentuan1')}}">Syarat & Ketentuan</a></li>
         </ul>

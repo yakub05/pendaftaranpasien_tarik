@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Pasien;
+use App\Models\Antrian;
+use App\Exports\ExportExcel;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\ExportExcel;
 use Illuminate\Support\Facades\Validator;
 
 class PasienController extends Controller
@@ -39,7 +40,7 @@ class PasienController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'nik'=>'required|unique:pasiens|Max:16|Min:16',
+            'nik'=>'required|unique:pasiens|max:16|min:16',
             'nama'=>'required',
             'tempatlahir'    =>'required',
             'tgl_lahir' =>' required',
@@ -53,8 +54,8 @@ class PasienController extends Controller
         Validator::make($request->all(), $rules, $messages =
         [
             'nik.required' => "NIK harus diisi!",
-            'nik.Max' => "Nik Maksimal 16",
-            'nik.Max' => "Nik Minimal 16",
+            'nik.max' => "Nik Maksimal 16",
+            'nik.min' => "Nik Minimal 16",
             'nik.unique'    => 'NIK sudah pernah digunakan',
             'nama.required' =>'Nama harus diisi!',
             'tempatlahir.required'=>'Tempat Lahir harus diisi!',
@@ -81,9 +82,13 @@ class PasienController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        $pasien = Pasien::findOrFail($id);
-        $pasien->delete();
-        return back()->with('info', 'Data Berhasil Dihapus');
+        $pasien = Pasien::with("antrians")->findOrFail($id);
+        if($pasien->antrians->count() == 0){
+            $pasien->delete();
+            return back()->with('info', 'Data Berhasil Dihapus');
+        }else{
+            return back()->with('warning', 'Data Gagal Dihapus');
+        }
     }
 
     public function exportPDF(){
@@ -94,5 +99,53 @@ class PasienController extends Controller
 
     public function ExportExcel(){
         return Excel::download(new ExportExcel, 'excel-data-pasien'.Carbon::now()->timestamp. '.xlsx');
+    }
+
+    public function KonfirmasiDiterima($id){
+        $data = [
+            'status' => "Sudah dipanggil"
+        ];
+        Antrian::where('id', $id)->update($data);
+        $getAntrian = Antrian::where('id', $id)->first();
+        if($getAntrian->polis == 1){
+            return redirect('pasien/poliumum');
+        }else if($getAntrian->polis == 2){
+            return redirect('pasien/poligigi');
+        }else if($getAntrian->polis == 3){
+            return redirect('pasien/polilansia');
+        }else if($getAntrian->polis == 4){
+            return redirect('pasien/polikia');
+        }else if($getAntrian->polis == 5){
+            return redirect('pasien/poligizi');
+        }else if($getAntrian->polis == 6){
+            return redirect('pasien/polikb');
+        }else if($getAntrian->polis == 7){
+            return redirect('pasien/laborat');
+        }
+
+    }
+
+    public function KonfirmasiDitolak($id){
+        $data = [
+            'status' => "Belum dipanggil"
+        ];
+        Antrian::where('id', $id)->update($data);
+        $getAntrian = Antrian::where('id', $id)->first();
+        if($getAntrian->polis == 1){
+            return redirect('pasien/poliumum');
+        }else if($getAntrian->polis == 2){
+            return redirect('pasien/poligigi');
+        }else if($getAntrian->polis == 3){
+            return redirect('pasien/polilansia');
+        }else if($getAntrian->polis == 4){
+            return redirect('pasien/polikia');
+        }else if($getAntrian->polis == 5){
+            return redirect('pasien/poligizi');
+        }else if($getAntrian->polis == 6){
+            return redirect('pasien/polikb');
+        }else if($getAntrian->polis == 7){
+            return redirect('pasien/laborat');
+        }
+
     }
 }

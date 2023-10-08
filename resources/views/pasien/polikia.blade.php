@@ -59,7 +59,9 @@
                             <th>No.</th>
                             <th>NIK</th>
                             <th>Nama Lengkap</th>
+                            <th>Jenis Layanan</th>
                             <th>Action</th>
+                            <th>Status</th>
                         </tr>
                         </thead>
 
@@ -69,13 +71,18 @@
                             <th>{{$loop->iteration}}</th>
                             <td>{{$row->pasien->nik}}</td>
                             <td>{{$row->pasien->nama}}</td>
+                            <td>{{$row->pasien->layanan_kesehatan}}</td>
                             <td class="project-actions">
-                                <a class="btn btn-primary btn-sm" href="">
-                                    <i class="fas fas fa-folder">
+                                <a class="btn btn-success btn-sm" href="konfirmasi/{{$row->id}}">
+                                    <i class="fas fa-check">
                                     </i>
-                                    view
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="konfirmasiditolak/{{$row->id}}">
+                                    <i class="fas fa-ban">
+                                    </i>
                                 </a>
                             </td>
+                            <td>{{$row->status}}</td>
                         </tr>
                         @endforeach
 

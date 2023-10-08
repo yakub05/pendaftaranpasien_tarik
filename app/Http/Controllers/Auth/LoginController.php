@@ -30,7 +30,7 @@ class LoginController extends Controller
             'password' => $request->password,
         ])) {
             // cara 1 toast
-            alert()->success('Mantap', 'Selamat datang');
+            alert()->success('Anda Berhasil Login !', 'Selamat Datang Admin Puskesmas');
             return redirect('/admins/home');
         }
 

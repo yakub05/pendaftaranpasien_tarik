@@ -16,6 +16,7 @@ class Antrian extends Model
         'polis',
         'no_antrian',
         'tgl_antrian',
+        'status'
     ];
 
     public function pasien(){

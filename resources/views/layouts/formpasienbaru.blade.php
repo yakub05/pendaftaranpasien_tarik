@@ -38,6 +38,7 @@
                 <h3><strong>Formulir Pendaftaran Pasien Baru Puskesmas Tarik</strong></h3>
             </div>
             <div class="card-body ">
+                <small><strong>*Data Harus diisi Semua</strong></small><br><br>
                 <form action="formpasienbaru" method="post" enctype="multipart/form-data">
                     @csrf
                        <div class="form-group">
@@ -137,7 +138,7 @@
                             <div class="form-group">
                                 <label for="fotoktp">Foto KTP : </label>
                                 <input type="file" class="form-control" id="fotoktp" name="fotoktp">
-                                <small>*usahakan foto tidak buram</small>
+                                <small>*usahakan foto tidak buram, dengan format <strong>JPG,PNG,JPEG</strong></small>
                                 @error('fotoktp')
                                     <div class="text-danger">*{{ $message }}</div>
                                 @enderror

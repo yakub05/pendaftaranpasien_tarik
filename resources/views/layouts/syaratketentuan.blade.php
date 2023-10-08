@@ -18,10 +18,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-7">
-                    <h1>Syarat & Ketentuan pendaftaran di Puskesmas Tarik</h1><br>
-                    <p>
-                    Example inner page template
-                    </p>
+                    @foreach ($syarat as $ketentuan)
+                    <h1>{{$ketentuan->nama_layanan}}</h1>
+                    <p>{!!$ketentuan->isi!!}</p>
+                    @endforeach
                 </div>
 
                 <div class="col-5 text-center">

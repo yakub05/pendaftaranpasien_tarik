@@ -21,7 +21,7 @@
                     jika anda sudah memiliki nomor rekam media, serta apabila anda ingin melakukan pelayanan kesehatan dipuskesmas Tarik, maka dimohon untuk daftar terlebih dahulu dengan cara mengklik button dibawah ini :
                 </p> <br>
                       <!-- Button trigger modal -->
-                      <a href="/formdaftarpasien" class="btn btn-success">Pendaftaran Pasien</a>
+                      <a href="/formdaftarpasien" class="btn btn-success">Pendaftaran Pasien ke Poli</a>
 
             </div>
             <div class="col-7 text-center">

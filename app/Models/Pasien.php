@@ -23,11 +23,12 @@ class Pasien extends Model
         'layanan_kesehatan',
         'no_layanan',
         'fotoktp',
+        'status',
     ];
     public function polis(){
         return $this->belongsToMany(Poli::class, 'poli_pasiens');
         }
     public function antrians(){
-        return $this->hasMany(Antrian::class, 'id', 'pasiens');
+        return $this->hasMany(Antrian::class, 'pasiens');
     }
 }

@@ -32,7 +32,7 @@
                         <div class="col-md-8">
                             <div class="mb-4"><br><br><br><br>
                                 <h3>Menu login Admin</h3>
-                                <p class="mb-4">Silahkan auth untuk memulai aktivitas anda sebagai admin Puskesmas
+                                <p class="mb-4">Silahkan login untuk memulai aktivitas anda sebagai admin Puskesmas
                                     Tarik</p>
                             </div>
                             <form action="/login" method="post">

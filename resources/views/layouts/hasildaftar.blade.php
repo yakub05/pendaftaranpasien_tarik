@@ -46,7 +46,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                         <button type="submit" class="btn btn-success">Cetak</button>
-                                        </div>
+                                    </div>
                             </form>
                             </div>
                         </div>
@@ -59,6 +59,9 @@
                 </div>
             </div>
         </div>
+
     </section>
+    <!-- Template Main JS File -->
 
   </main><!-- End #main -->
+

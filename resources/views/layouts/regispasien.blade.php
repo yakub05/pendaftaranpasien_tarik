@@ -20,7 +20,7 @@
                     <br><br><p>
                         jika anda belum pernah melakukan layanan di puskesmas tarik, maka silahkan registrasi terlebih dahulu untuk mendapatkan Nomor Rekam Medis yang akan digunakan untuk melakukan pelayanan kesehatan. Klik Button Registrasi dibawah ini !!
                     </p> <br>
-                    <a href="/formpasienbaru" class="btn btn-success">Pendaftaran Pasien Baru</a>
+                    <a href="/formpasienbaru" class="btn btn-success">Registrasi Pasien Baru</a>
                 </div>
 
                 <div class="col-6 text-center">

@@ -37,7 +37,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                        <h3 class="card-title"><strong>Tabel Pasien Puskesmas Tarik</strong></h3>
+                        <h3 class="card-title"><strong>Tabel Kuota Poli Puskesmas Tarik</strong></h3>
                         <div class="card-tools">
                     </div>
                 </div>
@@ -55,7 +55,7 @@
 
                         @foreach ($polis as $poli )
                         <tr>
-                            <th>{{ $loop->iteration }}</th>
+                            <th>{{$loop->iteration }}</th>
                             <td>{{$poli->namapoli}}</td>
                             <td>{{$poli->kuota}}</td>
                             <td class="project-actions">

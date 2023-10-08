@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('polis')->constrained();
             $table->string('no_antrian',3);
             $table->date('tgl_antrian');
+            $table->string('delete')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
