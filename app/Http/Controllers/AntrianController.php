@@ -38,8 +38,8 @@ class AntrianController extends Controller
         ]);
 
         DB::table('poli_pasiens')->insert([
-            'polis_id'=>1,
-            'pasiens_id'=>7,
+            'polis_id'=> $request->poli,
+            'pasiens_id'=> $pasien->id,
         ]);
         toast('Selamat Anda Telah Terdaftar, Silahkan cetak bukti pendaftaran ','success');
         return view('layouts/hasildaftar');
